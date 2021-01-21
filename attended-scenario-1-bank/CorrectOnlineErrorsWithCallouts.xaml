@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>898,3401</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1225,3646</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AddNewAccounts_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="38">
@@ -85,25 +85,25 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Correct Online Errors with Callouts" sap:VirtualizedContainerService.HintSize="809,3336" sap2010:WorkflowViewState.IdRef="Sequence_12">
+  <Sequence DisplayName="Correct Online Errors with Callouts" sap:VirtualizedContainerService.HintSize="809,3581" sap2010:WorkflowViewState.IdRef="Sequence_12">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="" Browser="[InBrowserForCallouts]" BrowserType="Firefox" DisplayName="Connect to the Active Browser " sap:VirtualizedContainerService.HintSize="767,3244" sap2010:WorkflowViewState.IdRef="BrowserScope_1" UiBrowser="[InBrowserForCallouts]">
+    <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="" Browser="[InBrowserForCallouts]" BrowserType="Firefox" DisplayName="Connect to the Active Browser " sap:VirtualizedContainerService.HintSize="767,3489" sap2010:WorkflowViewState.IdRef="BrowserScope_1" UiBrowser="[InBrowserForCallouts]">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence sap:VirtualizedContainerService.HintSize="733,3105" sap2010:WorkflowViewState.IdRef="Sequence_16">
+          <Sequence sap:VirtualizedContainerService.HintSize="733,3350" sap2010:WorkflowViewState.IdRef="Sequence_16">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Find and Correct Field Errors" sap:VirtualizedContainerService.HintSize="691,3013" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence DisplayName="Find and Correct Field Errors" sap:VirtualizedContainerService.HintSize="691,3258" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="InputFieldText" />
                 <Variable x:TypeArguments="x:Int32" Name="NumberOfFieldErrors" />
@@ -127,6 +127,7 @@
                   </ui:Target>
                 </ui:FindChildren.Target>
               </ui:FindChildren>
+              <ui:Comment sap:VirtualizedContainerService.HintSize="649,74" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// The following two activities were in the if condition. Placed here to monitor their values&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" />
               <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="649,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Number of field errors found: &quot; + VisibleErrorLabels.Count.ToString]" />
               <Assign sap:VirtualizedContainerService.HintSize="649,60" sap2010:WorkflowViewState.IdRef="Assign_1">
                 <Assign.To>
@@ -136,15 +137,16 @@
                   <InArgument x:TypeArguments="x:Int32">[VisibleErrorLabels.Count]</InArgument>
                 </Assign.Value>
               </Assign>
-              <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each Error on the Webpage" sap:VirtualizedContainerService.HintSize="649,2320" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[VisibleErrorLabels]">
+              <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each Error on the Webpage" sap:VirtualizedContainerService.HintSize="649,2451" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[VisibleErrorLabels]">
                 <ui:ForEach.Body>
                   <ActivityAction x:TypeArguments="ui:UiElement">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="ui:UiElement" Name="ErrorLabel" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="613,2187" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="613,2318" sap2010:WorkflowViewState.IdRef="Sequence_11">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:String" Name="StyleAttribute" />
+                        <Variable x:TypeArguments="x:String" Name="InputFieldName" />
                       </Sequence.Variables>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -166,12 +168,28 @@
                           </ui:Target>
                         </ui:GetAttribute.Target>
                       </ui:GetAttribute>
-                      <If Condition="[String.IsNullOrEmpty(StyleAttribute)]" sap:VirtualizedContainerService.HintSize="571,1959" sap2010:WorkflowViewState.IdRef="If_1">
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="571,91" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[&quot;The style attribute for the Error Label comes back as: &quot; + StyleAttribute]" />
+                      <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="for" DisplayName="Get the Name of the Input Field with the Error" sap:VirtualizedContainerService.HintSize="571,96" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+                        <ui:GetAttribute.Result>
+                          <OutArgument x:TypeArguments="x:String">[InputFieldName]</OutArgument>
+                        </ui:GetAttribute.Result>
+                        <ui:GetAttribute.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[ErrorLabel]" Id="21eb5fad-5715-4611-a209-947e74c99ba7">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:GetAttribute.Target>
+                      </ui:GetAttribute>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="571,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;The input field being corrected is: &quot; + InputFieldName]" />
+                      <If Condition="[String.IsNullOrEmpty(StyleAttribute)]" sap:VirtualizedContainerService.HintSize="571,1692" sap2010:WorkflowViewState.IdRef="If_1">
                         <If.Then>
-                          <Sequence sap:VirtualizedContainerService.HintSize="426,1812" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                          <Sequence sap:VirtualizedContainerService.HintSize="426,1545" sap2010:WorkflowViewState.IdRef="Sequence_9">
                             <Sequence.Variables>
                               <Variable x:TypeArguments="ui:UiElement" Name="InputField" />
-                              <Variable x:TypeArguments="x:String" Name="InputFieldName" />
                               <Variable x:TypeArguments="x:String" Name="FieldLabel" />
                             </Sequence.Variables>
                             <sap:WorkflowViewStateService.ViewState>
@@ -179,22 +197,6 @@
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="for" DisplayName="Get the Name of the Input Field with the Error" sap:VirtualizedContainerService.HintSize="384,96" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
-                              <ui:GetAttribute.Result>
-                                <OutArgument x:TypeArguments="x:String">[InputFieldName]</OutArgument>
-                              </ui:GetAttribute.Result>
-                              <ui:GetAttribute.Target>
-                                <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[ErrorLabel]" Id="21eb5fad-5715-4611-a209-947e74c99ba7">
-                                  <ui:Target.TimeoutMS>
-                                    <InArgument x:TypeArguments="x:Int32" />
-                                  </ui:Target.TimeoutMS>
-                                  <ui:Target.WaitForReady>
-                                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                                  </ui:Target.WaitForReady>
-                                </ui:Target>
-                              </ui:GetAttribute.Target>
-                            </ui:GetAttribute>
-                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="384,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;The input field being corrected is: &quot; + InputFieldName]" />
                             <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find the Associated Input Field" FoundElement="[InputField]" sap:VirtualizedContainerService.HintSize="384,68" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
                               <ui:WaitUiElementAppear.Target>
                                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3759e7cd-cc0d-4367-9de8-a57e1e0fec19" Selector="&lt;webctrl id='{{InputFieldName}}' /&gt;">
