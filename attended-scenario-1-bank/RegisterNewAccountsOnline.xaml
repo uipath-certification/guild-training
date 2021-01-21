@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1061,3942</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1039,3728</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AddNewAccounts_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="76">
@@ -88,25 +88,25 @@
       <AssemblyReference>UiPath.Callout.Activity</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="1049,3877" sap2010:WorkflowViewState.IdRef="Sequence_16">
+  <Sequence sap:VirtualizedContainerService.HintSize="1049,3663" sap2010:WorkflowViewState.IdRef="Sequence_16">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="" Browser="[InBrowserWithAcmeWebsite]" BrowserType="Firefox" DisplayName="Connect to the Active Browser " sap:VirtualizedContainerService.HintSize="1007,3785" sap2010:WorkflowViewState.IdRef="BrowserScope_1" UiBrowser="[InBrowserWithAcmeWebsite]">
+    <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="" Browser="[InBrowserWithAcmeWebsite]" BrowserType="Firefox" DisplayName="Connect to the Active Browser " sap:VirtualizedContainerService.HintSize="1007,3571" sap2010:WorkflowViewState.IdRef="BrowserScope_1" UiBrowser="[InBrowserWithAcmeWebsite]">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence sap:VirtualizedContainerService.HintSize="973,3646" sap2010:WorkflowViewState.IdRef="Sequence_17">
+          <Sequence sap:VirtualizedContainerService.HintSize="973,3432" sap2010:WorkflowViewState.IdRef="Sequence_17">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="931,3554" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="931,3340" sap2010:WorkflowViewState.IdRef="Sequence_6">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -114,29 +114,28 @@
               </sap:WorkflowViewStateService.ViewState>
               <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="889,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Being processing the RegistrantsDataTable.&quot;]" />
               <ui:NavigateTo Browser="[InBrowserWithAcmeWebsite]" DisplayName="Navigate To" sap:VirtualizedContainerService.HintSize="889,59" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="https://acme-test.uipath.com/bank/account" />
-              <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="889,22" sap2010:WorkflowViewState.IdRef="Delay_5" />
-              <Sequence DisplayName="Process Registrants File" sap:VirtualizedContainerService.HintSize="889,2514" sap2010:WorkflowViewState.IdRef="Sequence_1">
+              <Sequence DisplayName="Process Registrants File" sap:VirtualizedContainerService.HintSize="889,2362" sap2010:WorkflowViewState.IdRef="Sequence_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[InRegistrantsDataTable]" DisplayName="For Each Registrant in the Excel File" sap:VirtualizedContainerService.HintSize="847,2422" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[InRegistrantsDataTable]" DisplayName="For Each Registrant in the Excel File" sap:VirtualizedContainerService.HintSize="847,2270" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                   <ui:ForEachRow.Body>
                     <ActivityAction x:TypeArguments="sd:DataRow">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Populate and Submit Registration Form" sap:VirtualizedContainerService.HintSize="797,2275" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                      <Sequence DisplayName="Populate and Submit Registration Form" sap:VirtualizedContainerService.HintSize="797,2123" sap2010:WorkflowViewState.IdRef="Sequence_3">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="755,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Inside For loop processing: &quot; + row.item(&quot;First Name&quot;).ToString + &quot; : &quot; + row.item(&quot;Status&quot;).ToString]" />
-                        <If Condition="[row(&quot;status&quot;).ToString&lt;&gt;&quot;User Rejected&quot;]" sap:VirtualizedContainerService.HintSize="755,2052" sap2010:WorkflowViewState.IdRef="If_1">
+                        <If Condition="[row(&quot;status&quot;).ToString&lt;&gt;&quot;User Rejected&quot;]" sap:VirtualizedContainerService.HintSize="755,1900" sap2010:WorkflowViewState.IdRef="If_1">
                           <If.Then>
-                            <Sequence sap:VirtualizedContainerService.HintSize="376,1905" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                            <Sequence sap:VirtualizedContainerService.HintSize="376,1753" sap2010:WorkflowViewState.IdRef="Sequence_14">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -227,11 +226,6 @@
                                   </ui:Target>
                                 </ui:TypeInto.Target>
                               </ui:TypeInto>
-                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="CorrectOnlineErrorsWithCallouts.xaml">
-                                <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="ui:Browser" x:Key="InBrowserForCallouts">[InBrowserWithAcmeWebsite]</InArgument>
-                                </ui:InvokeWorkflowFile.Arguments>
-                              </ui:InvokeWorkflowFile>
                               <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Trace" Message="[&quot;About to submit new registrant to website.&quot;]" />
                               <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Submit Button" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
                                 <ui:Click.CursorPosition>

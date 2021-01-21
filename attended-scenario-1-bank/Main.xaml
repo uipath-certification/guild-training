@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1225,1852" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:si="clr-namespace:System.IO;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="983,1262" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:si="clr-namespace:System.IO;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="26">
+    <scg:List x:TypeArguments="x:String" Capacity="52">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -27,10 +27,15 @@
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="26">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="52">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -57,58 +62,93 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="" sap:VirtualizedContainerService.HintSize="478,1787" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="" sap:VirtualizedContainerService.HintSize="509,1197" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="IncomingFolder" />
-      <Variable x:TypeArguments="x:String" Name="OutgoingFolder" />
+      <Variable x:TypeArguments="x:String" Name="OutgoingFolder">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">outgoing</Literal>
+        </Variable.Default>
+      </Variable>
       <Variable x:TypeArguments="ui:Browser" Name="ActiveBrowser" />
-      <Variable x:TypeArguments="x:String" Name="EmailRecipients" />
+      <Variable x:TypeArguments="x:String" Name="EmailRecipients">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">uipath@example.com</Literal>
+        </Variable.Default>
+      </Variable>
       <Variable x:TypeArguments="sd:DataTable" Name="RegistrantsDataTable" />
-      <Variable x:TypeArguments="si:FileInfo" Name="RegistrantsExcelFile" />
+      <Variable x:TypeArguments="si:FileInfo" Name="RegistrantsExcelFile">
+        <Variable.Default>
+          <mva:VisualBasicValue x:TypeArguments="si:FileInfo" ExpressionText="new FileInfo(&quot;Attended - Test Data Set 1 - New Accounts.xlsx&quot;)" />
+        </Variable.Default>
+      </Variable>
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReportStatus DisplayName="Report Status" sap:VirtualizedContainerService.HintSize="436,66" sap2010:WorkflowViewState.IdRef="ReportStatus_1" StatusText="[&quot;Registration processing sequence starting. Obtaining user input.&quot;]" />
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Get Required User Input" sap:VirtualizedContainerService.HintSize="436,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ObtainUserInput.xaml">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="467,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Incoming: &quot; + IncomingFolder + &quot; Outgoing: &quot; + OutgoingFolder + &quot; Email: &quot; + EmailRecipients]" />
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Firefox" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="467,184" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[ActiveBrowser]" Url="https://acme-test.uipath.com/bank/account">
+      <ui:OpenBrowser.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </ActivityAction>
+      </ui:OpenBrowser.Body>
+    </ui:OpenBrowser>
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[RegistrantsDataTable]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="467,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="[RegistrantsExcelFile.FullName]" />
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="467,51" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch.Try>
+        <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Status" DataTable="[RegistrantsDataTable]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="" DisplayName="Register New Accounts" sap:VirtualizedContainerService.HintSize="467,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="RegisterNewAccountsOnline.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutEmailRecipients">[EmailRecipients]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutMoveToFolder">[OutgoingFolder]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="OutDownloadsFolder">[IncomingFolder]</OutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="436,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Incoming: &quot; + IncomingFolder + &quot; Outgoing: &quot; + OutgoingFolder + &quot; Email: &quot; + EmailRecipients]" />
-    <ui:ReportStatus DisplayName="Report Status" sap:VirtualizedContainerService.HintSize="436,66" sap2010:WorkflowViewState.IdRef="ReportStatus_2" StatusText="[&quot;Logging into the Acme website.&quot;]" />
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Log into the Acme Website" sap:VirtualizedContainerService.HintSize="436,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="LoginToWebsite.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="ui:Browser" x:Key="OutAcmeWebsite">[ActiveBrowser]</OutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:ReportStatus DisplayName="Report Status" sap:VirtualizedContainerService.HintSize="436,66" sap2010:WorkflowViewState.IdRef="ReportStatus_3" StatusText="[&quot;Downloading latest registrations file.&quot;]" />
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Download Files - Not Implemented" sap:VirtualizedContainerService.HintSize="436,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="DownloadNewRegistrantsExcelFiles.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="InDownloadFolder">[IncomingFolder]</InArgument>
-        <InArgument x:TypeArguments="ui:Browser" x:Key="InActiveBrowser">[ActiveBrowser]</InArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="OutRegistrantsDataTable">[RegistrantsDataTable]</OutArgument>
-        <OutArgument x:TypeArguments="si:FileInfo" x:Key="OutRegistrantsFile">[RegistrantsExcelFile]</OutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="CorrectBlankExcelFieldsWithForms.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="InOutRegistrantsDataTable">[RegistrantsDataTable]</InOutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:ReportStatus DisplayName="Report Status" sap:VirtualizedContainerService.HintSize="436,66" sap2010:WorkflowViewState.IdRef="ReportStatus_4" StatusText="[&quot;Registering new accounts.&quot;]" />
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="" DisplayName="Register New Accounts" sap:VirtualizedContainerService.HintSize="436,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="RegisterNewAccountsOnline.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="ui:Browser" x:Key="InBrowserWithAcmeWebsite">[ActiveBrowser]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="InProcessedFilesFolder">[OutgoingFolder]</InArgument>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="InRegistrantsDataTable">[RegistrantsDataTable]</InArgument>
-        <InArgument x:TypeArguments="si:FileInfo" x:Key="InRegistrantsExcelFile">[RegistrantsExcelFile]</InArgument>
+        <InArgument x:TypeArguments="ui:Browser" x:Key="InBrowserWithAcmeWebsite">
+          <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="ActiveBrowser" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="InProcessedFilesFolder">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="OutgoingFolder" />
+        </InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="InRegistrantsDataTable">
+          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="RegistrantsDataTable" />
+        </InArgument>
+        <InArgument x:TypeArguments="si:FileInfo" x:Key="InRegistrantsExcelFile">
+          <mva:VisualBasicValue x:TypeArguments="si:FileInfo" ExpressionText="RegistrantsExcelFile" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -116,14 +156,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:ReportStatus DisplayName="Report Status" sap:VirtualizedContainerService.HintSize="436,66" sap2010:WorkflowViewState.IdRef="ReportStatus_5" StatusText="[&quot;Emailing status report.&quot;]" />
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Send Status Update Email" sap:VirtualizedContainerService.HintSize="436,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="SendOutlookEmail.xaml">
+    <ui:ReportStatus DisplayName="Report Status" sap:VirtualizedContainerService.HintSize="467,66" sap2010:WorkflowViewState.IdRef="ReportStatus_5" StatusText="[&quot;Emailing status report.&quot;]" />
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Send Status Update Email" sap:VirtualizedContainerService.HintSize="467,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="SendOutlookEmail.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="InEmailRecipients">[EmailRecipients]</InArgument>
         <InArgument x:TypeArguments="si:FileInfo" x:Key="InRegistrantsExcelFile">[RegistrantsExcelFile]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="InProcessedFolder">[OutgoingFolder]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="436,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Workflow complete.&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="467,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Workflow complete.&quot;]" />
   </Sequence>
 </Activity>
