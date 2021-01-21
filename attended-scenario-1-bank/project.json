@@ -1,7 +1,7 @@
 {
   "name": "Scenario 1 Bank Account",
   "description": "ACME Bank Account",
-  "main": "Main - Reviewed.xaml",
+  "main": "Main.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.9.3]",
     "UiPath.Form.Activities": "[1.1.9]",
@@ -43,12 +43,6 @@
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
     {
-      "filePath": "Main - Reviewed.xaml",
-      "uniqueId": "e4f3fb79-074c-44ce-8f19-3486be3e6f6e",
-      "input": [],
-      "output": []
-    },
-    {
       "filePath": "ObtainUserInput.xaml",
       "uniqueId": "0a92b9f7-e1dd-46ad-91c7-8609df749257",
       "input": [],
@@ -75,6 +69,12 @@
     {
       "filePath": "DownloadNewRegistrantsExcelFiles.xaml",
       "uniqueId": "7e3539c2-2f40-4f93-b04c-a5c58360c84b",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "3f94f26a-5de2-470f-a32b-53eba6bf0434",
       "input": [],
       "output": []
     }

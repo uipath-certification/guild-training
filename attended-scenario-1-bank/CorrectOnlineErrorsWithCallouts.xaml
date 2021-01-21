@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1225,3646</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1225,3532</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AddNewAccounts_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="38">
@@ -85,25 +85,25 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Correct Online Errors with Callouts" sap:VirtualizedContainerService.HintSize="809,3581" sap2010:WorkflowViewState.IdRef="Sequence_12">
+  <Sequence DisplayName="Correct Online Errors with Callouts" sap:VirtualizedContainerService.HintSize="809,3467" sap2010:WorkflowViewState.IdRef="Sequence_12">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="" Browser="[InBrowserForCallouts]" BrowserType="Firefox" DisplayName="Connect to the Active Browser " sap:VirtualizedContainerService.HintSize="767,3489" sap2010:WorkflowViewState.IdRef="BrowserScope_1" UiBrowser="[InBrowserForCallouts]">
+    <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="" Browser="[InBrowserForCallouts]" BrowserType="Firefox" DisplayName="Connect to the Active Browser " sap:VirtualizedContainerService.HintSize="767,3375" sap2010:WorkflowViewState.IdRef="BrowserScope_1" UiBrowser="[InBrowserForCallouts]">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence sap:VirtualizedContainerService.HintSize="733,3350" sap2010:WorkflowViewState.IdRef="Sequence_16">
+          <Sequence sap:VirtualizedContainerService.HintSize="733,3236" sap2010:WorkflowViewState.IdRef="Sequence_16">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Find and Correct Field Errors" sap:VirtualizedContainerService.HintSize="691,3258" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence DisplayName="Find and Correct Field Errors" sap:VirtualizedContainerService.HintSize="691,3144" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="InputFieldText" />
                 <Variable x:TypeArguments="x:Int32" Name="NumberOfFieldErrors" />
@@ -127,7 +127,6 @@
                   </ui:Target>
                 </ui:FindChildren.Target>
               </ui:FindChildren>
-              <ui:Comment sap:VirtualizedContainerService.HintSize="649,74" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// The following two activities were in the if condition. Placed here to monitor their values&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" />
               <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="649,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Number of field errors found: &quot; + VisibleErrorLabels.Count.ToString]" />
               <Assign sap:VirtualizedContainerService.HintSize="649,60" sap2010:WorkflowViewState.IdRef="Assign_1">
                 <Assign.To>
@@ -169,25 +168,9 @@
                         </ui:GetAttribute.Target>
                       </ui:GetAttribute>
                       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="571,91" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[&quot;The style attribute for the Error Label comes back as: &quot; + StyleAttribute]" />
-                      <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="for" DisplayName="Get the Name of the Input Field with the Error" sap:VirtualizedContainerService.HintSize="571,96" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
-                        <ui:GetAttribute.Result>
-                          <OutArgument x:TypeArguments="x:String">[InputFieldName]</OutArgument>
-                        </ui:GetAttribute.Result>
-                        <ui:GetAttribute.Target>
-                          <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[ErrorLabel]" Id="21eb5fad-5715-4611-a209-947e74c99ba7">
-                            <ui:Target.TimeoutMS>
-                              <InArgument x:TypeArguments="x:Int32" />
-                            </ui:Target.TimeoutMS>
-                            <ui:Target.WaitForReady>
-                              <InArgument x:TypeArguments="ui:WaitForReady" />
-                            </ui:Target.WaitForReady>
-                          </ui:Target>
-                        </ui:GetAttribute.Target>
-                      </ui:GetAttribute>
-                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="571,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;The input field being corrected is: &quot; + InputFieldName]" />
-                      <If Condition="[String.IsNullOrEmpty(StyleAttribute)]" sap:VirtualizedContainerService.HintSize="571,1692" sap2010:WorkflowViewState.IdRef="If_1">
+                      <If Condition="[String.IsNullOrEmpty(StyleAttribute) Or StyleAttribute.Contains(&quot;inline-block&quot;)]" sap:VirtualizedContainerService.HintSize="571,1959" sap2010:WorkflowViewState.IdRef="If_1">
                         <If.Then>
-                          <Sequence sap:VirtualizedContainerService.HintSize="426,1545" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                          <Sequence sap:VirtualizedContainerService.HintSize="426,1812" sap2010:WorkflowViewState.IdRef="Sequence_9">
                             <Sequence.Variables>
                               <Variable x:TypeArguments="ui:UiElement" Name="InputField" />
                               <Variable x:TypeArguments="x:String" Name="FieldLabel" />
@@ -197,6 +180,22 @@
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
+                            <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="for" DisplayName="Get the Name of the Input Field with the Error" sap:VirtualizedContainerService.HintSize="384,96" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+                              <ui:GetAttribute.Result>
+                                <OutArgument x:TypeArguments="x:String">[InputFieldName]</OutArgument>
+                              </ui:GetAttribute.Result>
+                              <ui:GetAttribute.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[ErrorLabel]" Id="21eb5fad-5715-4611-a209-947e74c99ba7">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:GetAttribute.Target>
+                            </ui:GetAttribute>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="384,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;The input field being corrected is: &quot; + InputFieldName]" />
                             <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find the Associated Input Field" FoundElement="[InputField]" sap:VirtualizedContainerService.HintSize="384,68" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
                               <ui:WaitUiElementAppear.Target>
                                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3759e7cd-cc0d-4367-9de8-a57e1e0fec19" Selector="&lt;webctrl id='{{InputFieldName}}' /&gt;">
@@ -290,9 +289,7 @@
                                 <ActivityFunc x:TypeArguments="sd:Rectangle, s:IntPtr, stt:Task" Argument1="{x:Reference __ReferenceID0}" Argument2="{x:Reference __ReferenceID1}">
                                   <uca:CallOutActivity CalloutFieldsInputData="{x:Null}" CalloutFieldsOutputData="{x:Null}" Dismissed="{x:Null}" Result="{x:Null}" SelectedButton="{x:Null}" TimeoutInSeconds="{x:Null}" BackgroundColor="#FFFFFFFF" CalloutSchema="%[{&quot;tag&quot;:&quot;h3&quot;,&quot;refreshOnChange&quot;:true,&quot;content&quot;:&quot;Correction&quot;,&quot;key&quot;:&quot;title&quot;,&quot;label&quot;:&quot;HTML&quot;,&quot;attrs&quot;:[{&quot;attr&quot;:&quot;&quot;,&quot;value&quot;:&quot;&quot;}],&quot;mask&quot;:false,&quot;tableView&quot;:true,&quot;alwaysEnabled&quot;:false,&quot;type&quot;:&quot;label&quot;,&quot;input&quot;:false,&quot;reorder&quot;:false,&quot;labelWidth&quot;:30,&quot;labelMargin&quot;:3,&quot;clearOnRefresh&quot;:false},{&quot;label&quot;:&quot;HTML&quot;,&quot;tag&quot;:&quot;br&quot;,&quot;attrs&quot;:[{&quot;attr&quot;:&quot;&quot;,&quot;value&quot;:&quot;&quot;}],&quot;refreshOnChange&quot;:true,&quot;mask&quot;:false,&quot;tableView&quot;:true,&quot;alwaysEnabled&quot;:false,&quot;type&quot;:&quot;label&quot;,&quot;input&quot;:false,&quot;key&quot;:&quot;wellcontent&quot;,&quot;reorder&quot;:false,&quot;labelWidth&quot;:30,&quot;labelMargin&quot;:3,&quot;clearOnRefresh&quot;:false},{&quot;refreshOnChange&quot;:true,&quot;content&quot;:&quot;Please correct the {{data.InFieldLabel}} field.&quot;,&quot;key&quot;:&quot;label&quot;,&quot;input&quot;:false,&quot;tableView&quot;:false,&quot;label&quot;:&quot;Label&quot;,&quot;type&quot;:&quot;label&quot;},{&quot;label&quot;:&quot;OK&quot;,&quot;disableOnInvalid&quot;:true,&quot;mask&quot;:false,&quot;tableView&quot;:true,&quot;alwaysEnabled&quot;:false,&quot;type&quot;:&quot;button&quot;,&quot;key&quot;:&quot;submit&quot;,&quot;input&quot;:true,&quot;defaultValue&quot;:false,&quot;showValidations&quot;:false,&quot;reorder&quot;:false,&quot;customClass&quot;:&quot;text-right&quot;,&quot;labelWidth&quot;:30,&quot;labelMargin&quot;:3,&quot;widget&quot;:null,&quot;clearOnRefresh&quot;:false}]" CalloutTheme="{}{&quot;Activities&quot;:[&quot;CALLOUT&quot;],&quot;Id&quot;:&quot;100100&quot;,&quot;Name&quot;:&quot;Default&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/cerulean.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/cerulean.png&quot;,&quot;OverrideCssUrl&quot;:&quot;../../assets/css/themes/callout-cerulean-white.css&quot;,&quot;UserStyleOverrides&quot;:&quot;&quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:false,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" DisplayName="Callout Designer" GenerateInputFields="False" Height="237" sap:VirtualizedContainerService.HintSize="244,81" sap2010:WorkflowViewState.IdRef="CallOutActivity_1" Width="355">
                                     <uca:CallOutActivity.CalloutFieldsCollection>
-                                      <InArgument x:TypeArguments="x:String" x:Key="InFieldLabel">
-                                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="FieldLabel" />
-                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="InFieldLabel">[FieldLabel]</InArgument>
                                     </uca:CallOutActivity.CalloutFieldsCollection>
                                     <uca:CallOutActivity.TargetElementPosition>
                                       <InArgument x:TypeArguments="sd:Rectangle">
