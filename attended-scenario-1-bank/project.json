@@ -1,0 +1,85 @@
+{
+  "name": "Scenario 1 Bank Account",
+  "description": "ACME Bank Account",
+  "main": "Main - Reviewed.xaml",
+  "dependencies": {
+    "UiPath.Excel.Activities": "[2.9.3]",
+    "UiPath.Form.Activities": "[1.2.1-preview]",
+    "UiPath.Mail.Activities": "[1.9.3]",
+    "UiPath.System.Activities": "[20.10.1]",
+    "UiPath.UIAutomation.Activities": "[20.10.6]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "20.10.2.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "isPausable": true,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main - Reviewed.xaml",
+      "uniqueId": "e4f3fb79-074c-44ce-8f19-3486be3e6f6e",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "ObtainUserInput.xaml",
+      "uniqueId": "0a92b9f7-e1dd-46ad-91c7-8609df749257",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "LoginToWebsite.xaml",
+      "uniqueId": "7418305b-fc54-41ba-a471-893d90831e84",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "RegisterNewAccountsOnline.xaml",
+      "uniqueId": "6a401153-3e63-4e91-9bf7-0b6e8a75379c",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "CorrectBlankExcelFieldsWithForms.xaml",
+      "uniqueId": "3a5f488f-c60e-4f2f-a613-bd615818879c",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "DownloadNewRegistrantsExcelFiles.xaml",
+      "uniqueId": "7e3539c2-2f40-4f93-b04c-a5c58360c84b",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {}
+}
